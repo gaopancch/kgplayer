@@ -2,6 +2,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:background="@color/colorAccent"
+        android:secondaryProgressTint="@color/colorPrimaryDark"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_centerInParent="true"
+        android:max="10000"
+        android:progress="0"
+        />
+    <Button
+        android:id="@+id/play"
+        android:text="play"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/pause"
+        android:text="pause"
+        android:layout_toRightOf="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.kuaige.player.player.VideoPlayer
         android:id="@+id/video"

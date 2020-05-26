@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -19,6 +20,8 @@ import java.util.Map;
 
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Author: wangkai(wangkai@tv365.net)
@@ -78,11 +81,12 @@ public class VideoPlayer extends FrameLayout {
         mSurfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
-
+                Log.i(TAG,"VideoPlayer surfaceCreated ");
             }
 
             @Override
             public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+                Log.i(TAG,"VideoPlayer surfaceChanged ");
                 if (mMediaPlayer != null) {
                     mMediaPlayer.setDisplay(surfaceHolder);
                 }
@@ -90,7 +94,7 @@ public class VideoPlayer extends FrameLayout {
 
             @Override
             public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-
+                Log.i(TAG,"VideoPlayer surfaceDestroyed ");
             }
         });
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT
@@ -287,8 +291,10 @@ public class VideoPlayer extends FrameLayout {
                         startRequested = false;
                         pausedForLoss = false;
                     }
-                    if (mMediaPlayer != null)//恢复音量
+                    //恢复音量
+                    if (mMediaPlayer != null) {
                         mMediaPlayer.setVolume(1.0f, 1.0f);
+                    }
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS://焦点丢失
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT://焦点暂时丢失
